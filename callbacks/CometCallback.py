@@ -7,4 +7,4 @@ class CometCallback(Callback):
         self.experiment = experiment
 
     def on_epoch_end(self, epoch, logs):
-        self.experiment.log_metrics(logs)
+        self.experiment.log_metrics(logs, step=None, epoch=epoch)

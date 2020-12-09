@@ -66,7 +66,7 @@ print(project.data_dir) # /foo/baa/…/dataset
 ```
 ## Data
 In the `data` package you can define your own Dataset, as always by subclassing `torch.data.utils.Dataset`, exposing transformations and utilities to work with your data.
-In our example, we directly used `ImageDataset` from `torchvision` but we included a skeleton for a custom `Dataset` in `/data/MyDataset`
+In our example, we directly used `ImageFolder` from `torchvision` but we included a skeleton for a custom `Dataset` in `/data/MyDataset`
 ### Transformation
 You usually have to do some preprocessing on the data, e.g. resize the images and apply data augmentation. All your transformation should go inside `.data.trasformation`. In our template, we included a wrapper for
 [imgaug](https://imgaug.readthedocs.io/en/latest/)
