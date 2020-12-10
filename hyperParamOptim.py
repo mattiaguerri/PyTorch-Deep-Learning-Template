@@ -16,7 +16,7 @@ if __name__ == '__main__':
     project = Project()
     # our hyperparameters
     params = {
-        'epochs': 10,
+        'epochs': 100,
         'lr': 0.001,
         'batch_size': 32,
         'model': 'Net1T',
