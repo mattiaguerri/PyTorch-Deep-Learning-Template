@@ -1,4 +1,5 @@
 import time
+import json
 from comet_ml import Experiment, Optimizer
 import torch.optim as optim
 from torchsummary import summary
@@ -13,6 +14,7 @@ from logger import logging
 
 
 if __name__ == '__main__':
+
     project = Project()
     # our hyperparameters
     params = {
@@ -24,8 +26,10 @@ if __name__ == '__main__':
         'hiddenSize': 512,
         'dropout': .0
     }
-    print()
     logging.info(f'Using device={device} 🚀 🔥  ⚡')
+
+    with open('./secrets.json') as jsonFile:
+        apiKey = json.load(jsonFile)['COMET_API_KEY_Mattia']
     
     # get the datasets
     train_dl, val_dl, test_dl = get_dataloaders(
@@ -61,15 +65,14 @@ if __name__ == '__main__':
     }
     
     # instantiate optimizer object
-    print('')
-    opt = Optimizer(config, api_key="7bXV3NLiVQKVKcTtfx8jI03Vn")
+    opt = Optimizer(config, api_key=apiKey)
     
     # hyper parameter search
     
-    for experiment in opt.get_experiments(project_name="cometHPO"):
+    for experiment in opt.get_experiments(project_name="cometHPO_00"):
         
         # build the model
-        inpSize=666; outSize=5; numHiddenLayers=params['numHiddenLayers'];
+        inpSize=666; outSize=5; numHiddenLayers=params['numHiddenLayers']
         net = Net1T_HPO(inpSize, outSize, numHiddenLayers, experiment).to(device)
         
         # define custom optimizer and instantiace the trainer `Model`
