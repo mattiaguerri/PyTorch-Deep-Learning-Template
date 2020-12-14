@@ -58,7 +58,7 @@ Every deep learning project has at least three mains steps:
 One good idea is to store all the paths at an interesting location, e.g. the dataset folder, in a shared class that can be accessed by anyone in the folder. You should never hardcode any paths and always define them once and import them. So, if you later change your structure you will only have to modify one file.
 If we have a look at `Project.py` we can see how we defined the `data_dir` and the `checkpoint_dir` once for all. We are using the 'new' [Path](https://docs.python.org/3/library/pathlib.html) APIs that support different OS out of the box, and also makes it easier to join and concatenate paths.
 ![alt](https://raw.githubusercontent.com/FrancescoSaverioZuppichini/PyTorch-Deep-Learning-Skeletron/master/images/Project.png)
-For example, if we want to know the data location we can :
+For example, if we want to know the data location we can :
 ```python3
 from Project import Project
 project = Project() 
@@ -66,7 +66,7 @@ print(project.data_dir) # /foo/baa/…/dataset
 ```
 ## Data
 In the `data` package you can define your own Dataset, as always by subclassing `torch.data.utils.Dataset`, exposing transformations and utilities to work with your data.
-In our example, we directly used `ImageFolder` from `torchvision` but we included a skeleton for a custom `Dataset` in `/data/MyDataset`
+In our example, we directly used `ImageDataset` from `torchvision` but we included a skeleton for a custom `Dataset` in `/data/MyDataset`
 ### Transformation
 You usually have to do some preprocessing on the data, e.g. resize the images and apply data augmentation. All your transformation should go inside `.data.trasformation`. In our template, we included a wrapper for
 [imgaug](https://imgaug.readthedocs.io/en/latest/)
@@ -114,7 +114,7 @@ We also created different utilities function to plot both dataset and dataloader
 ![alt](https://github.com/FrancescoSaverioZuppichini/PyTorch-Deep-Learning-Skeletron/blob/master/images/Figure_2.png?raw=true)
 As you can see data-augmentation is correctly applied on the train set
 ## Conclusions
-I hope you found some useful information and hopefully it this template will help you on your next amazing project :)
+I hope you found some useful information and hopefully it this template will help you on your next amazing project :)
 
 Let me know if you have some ideas/suggestions to improve it.
 
