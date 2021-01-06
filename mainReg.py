@@ -94,7 +94,7 @@ if __name__ == '__main__':
     )
     
     # define our comet experiment
-    experiment = Experiment(api_key="7bXV3NLiVQKVKcTtfx8jI03Vn",
+    experiment = Experiment(api_key="",
                             project_name="cometTestDrive",
                             workspace="mattiaguerri")
     experiment.add_tag('experimentTag')
